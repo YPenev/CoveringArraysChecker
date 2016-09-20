@@ -1,0 +1,6 @@
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\bin\Debug\CoveringArraysChecker.exe.config
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\bin\Debug\CoveringArraysChecker.exe
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\bin\Debug\CoveringArraysChecker.pdb
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\obj\Debug\CoveringArraysChecker.csprojResolveAssemblyReference.cache
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\obj\Debug\CoveringArraysChecker.exe
+c:\users\penev\documents\visual studio 2015\Projects\CoveringArraysChecker\CoveringArraysChecker\obj\Debug\CoveringArraysChecker.pdb
