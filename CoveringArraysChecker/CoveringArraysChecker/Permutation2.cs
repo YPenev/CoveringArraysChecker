@@ -42,18 +42,18 @@ namespace CoveringArraysChecker
         }
 
         // Does it work ?
-        public List<string> GetPermutationWithoutRepeat(int length)
+        public List<string> GetPermutationWithoutRepeat(int length, int t)
         {
             var letters = Common.GetNumbersFromZeroToN(length - 1);
 
-            MakePermutationWithoutRepeat(letters);
+            MakePermutationWithoutRepeat(letters, t);
 
 
             return combinations;
         }
 
 
-        private void MakePermutationWithoutRepeat(string word)
+        private void MakePermutationWithoutRepeat(string word, int t)
         {
 
             List<string> result = new List<string>();
@@ -83,7 +83,7 @@ namespace CoveringArraysChecker
             }
 
             // remove duplicates
-          combinations =  result.Distinct().Where(x => x.Length == 3).ToList();  // TODO: Тук трябва да подам Т (3)
+          combinations =  result.Distinct().Where(x => x.Length == t).ToList();  // TODO: Тук трябва да подам Т (3)
 
         }
 

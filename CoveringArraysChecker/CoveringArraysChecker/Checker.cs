@@ -12,7 +12,7 @@ namespace CoveringArraysChecker
         private List<string> allCombinations;
         private List<string> allColumnCombination;
 
-        public Checker(List<string> givenArray, List<string> combinations, int n)
+        public Checker(List<string> givenArray, List<string> combinations, int n, int t)
         {
             this.array = givenArray;
             this.allCombinations = combinations;
@@ -21,9 +21,9 @@ namespace CoveringArraysChecker
             // Трябва да не се повтарят индексите на колоните !!!
             Permutation2 per = new Permutation2(" ");
 
-            //TODO: Грешка трябва да намерия всички комбинации от Т елемента в Н на брой елемента
+            // (FIXED) Грешка, трябва да намерия всички комбинации от Т елемента в Н на брой елемента
             // Може да стане като намерим всички възможни комбинации и вземем само тези който са с Т дължина и нямат повтарящи се елементи
-            allColumnCombination = per.GetPermutationWithoutRepeat(n);
+            allColumnCombination = per.GetPermutationWithoutRepeat(n, t);
         }
 
         public bool CheckAllColumns()
@@ -44,7 +44,7 @@ namespace CoveringArraysChecker
             }
 
             return true;
-            //TODO: Не проверявам за всяка комбинация от колони, и не запълвам листа с комбинациите като проверя
+            // (FIXED) Не проверявам за всяка комбинация от колони, и не запълвам листа с комбинациите като проверя
         }
 
         /// <summary>
@@ -102,42 +102,6 @@ namespace CoveringArraysChecker
 
                 return false;
             }
-
-
-
-
-            //foreach (var combination in allCombinations)
-            //{
-
-            //    bool isCombinationFind = false;
-
-            //    for (int i = 0; i < array.Count; i++)
-            //    {
-            //        string partOfColumn = string.Empty;
-
-            //        if (startColumn + lenght >= array[i].Length)
-            //        {
-            //            partOfColumn = array[i].Substring(startColumn, array[i].Length - 1 - startColumn) + array[i].Substring(0, lenght % array[i].Length);
-            //        }
-            //        else
-            //        {
-            //            partOfColumn = array[i].Substring(startColumn, lenght);
-            //        }
-
-            //        if (partOfColumn.Contains(combination))
-            //        {
-            //            isCombinationFind = true;
-            //            break;
-            //        }
-            //    }
-
-            //    if (!isCombinationFind)
-            //    {
-            //        return false;
-            //    }
-            //}
-
-            //return true;
         }
     }
 }

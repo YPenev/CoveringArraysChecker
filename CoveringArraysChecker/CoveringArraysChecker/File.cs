@@ -19,11 +19,11 @@ namespace CoveringArraysChecker
         {
             Permutation2 per = new Permutation2("");
 
-            allCombinations = per.GetCombinations(1); //TODO: remove magic string (statesPerElement)
+            allCombinations = per.GetCombinations(statesPerElement - 1); 
 
-            Checker checker = new Checker(lines, allCombinations, 5); //TODO: remove magic string (t)
+            Checker checker = new Checker(lines, allCombinations, elementsCount, t); //TODO: remove magic string (t)
 
-            if (checker.CheckAllColumns()) 
+            if (checker.CheckAllColumns())
             {
                 return true;
             }
@@ -66,6 +66,8 @@ namespace CoveringArraysChecker
                         lines.Add(line);
                     }
                 }
+
+                Print.Array(lines);
 
                 return lines;
             }
