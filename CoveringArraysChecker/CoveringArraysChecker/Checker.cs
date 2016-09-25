@@ -18,17 +18,24 @@ namespace CoveringArraysChecker
             this.allCombinations = combinations;
 
             // Всички комбинации от t колони
-            Permutation2 per = new Permutation2();
-            allColumnCombination = per.GetCombinations(t);
+            // Трябва да не се повтарят индексите на колоните !!!
+            Permutation2 per = new Permutation2(" ");
+
+            //TODO: Грешка трябва да намерия всички комбинации от Т елемента в Н на брой елемента
+            // Може да стане като намерим всички възможни комбинации и вземем само тези който са с Т дължина и нямат повтарящи се елементи
+            allColumnCombination = per.GetPermutationWithoutRepeat(t);
         }
 
-        public bool CheckAllColumns(int t)
+        public bool CheckAllColumns()
         {
 
             foreach (var tColumnCombination in allColumnCombination)
             {
                 // Лист от индекси на колоните който трябва да провери
-                List<int> columnsIndexes = tColumnCombination.Split(' ').Select(int.Parse).ToList();
+
+                // List<int> columnsIndexes = tColumnCombination.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+
+                List<int> columnsIndexes = Array.ConvertAll(tColumnCombination.ToCharArray(), c => (int)Char.GetNumericValue(c)).ToList();
 
                 if (!CheckTColumns(columnsIndexes))
                 {
@@ -37,6 +44,7 @@ namespace CoveringArraysChecker
             }
 
             return true;
+            //TODO: Не проверявам за всяка комбинация от колони, и не запълвам листа с комбинациите като проверя
         }
 
         /// <summary>
@@ -44,10 +52,13 @@ namespace CoveringArraysChecker
         /// </summary>
         private bool CheckTColumns(List<int> columnsIndexes)
         {
+            var tempAllCombinations = new List<string>(allCombinations);
+            var currentCombination = new StringBuilder();
+
             // За всеки ред от масива
-            for (int i = 0; i < array[i].Length; i++)
+            for (int i = 0; i < array.Count; i++)
             {
-                var currentCombination = new StringBuilder();
+                currentCombination.Clear();
 
                 // Построява текущата комбинация
                 foreach (var index in columnsIndexes)
@@ -57,22 +68,42 @@ namespace CoveringArraysChecker
 
                 // Проверява дали конкретната комбинация съществъва в колекцията със всияки комбинации който трябва да се съдържат
                 // Ако я има в колекцията , я маха
-                if (allCombinations.Contains(currentCombination.ToString()))
+
+
+                // Проблем търси 0000 в 00
+                //   if (allCombinations.Contains(currentCombination.ToString()))
+
+                while (tempAllCombinations.FirstOrDefault(x => currentCombination.ToString().Contains(x)) != null)
                 {
-                    allCombinations.Remove(currentCombination.ToString());
-                    break;
+                    //TODO: Може да не работи защото махаме само по една комбинация на ред
+                    tempAllCombinations.Remove(tempAllCombinations.FirstOrDefault(x => currentCombination.ToString().Contains(x)));
+
                 }
             }
 
-            if (allCombinations.Count == 0)
+            if (tempAllCombinations.Count == 0)
             {
                 return true;
             }
             else
             {
+                Console.WriteLine("In column:");
+
+                foreach (var item in columnsIndexes)
+                {
+                    Console.Write(item);
+                }
+                Console.WriteLine();
+                Console.WriteLine("Not found: ");
+                foreach (var item in tempAllCombinations)
+                {
+                    Console.WriteLine(item);
+                }
+
                 return false;
             }
-           
+
+
 
 
             //foreach (var combination in allCombinations)

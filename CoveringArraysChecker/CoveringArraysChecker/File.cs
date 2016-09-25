@@ -17,13 +17,13 @@ namespace CoveringArraysChecker
 
         public bool CheckAllLines(List<string> lines)
         {
-            Permutation2 per = new Permutation2();
+            Permutation2 per = new Permutation2("");
 
             allCombinations = per.GetCombinations(1); //TODO: remove magic string (statesPerElement)
 
-            Checker checker = new Checker(lines, allCombinations);
+            Checker checker = new Checker(lines, allCombinations, 3); //TODO: remove magic string (t)
 
-            if (checker.CheckAllColumns(3))  //TODO: remove magic string (t)
+            if (checker.CheckAllColumns()) 
             {
                 return true;
             }
