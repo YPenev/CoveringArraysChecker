@@ -12,7 +12,7 @@ namespace CoveringArraysChecker
         private List<string> allCombinations;
         private List<string> allColumnCombination;
 
-        public Checker(List<string> givenArray, List<string> combinations, int t)
+        public Checker(List<string> givenArray, List<string> combinations, int n)
         {
             this.array = givenArray;
             this.allCombinations = combinations;
@@ -23,7 +23,7 @@ namespace CoveringArraysChecker
 
             //TODO: Грешка трябва да намерия всички комбинации от Т елемента в Н на брой елемента
             // Може да стане като намерим всички възможни комбинации и вземем само тези който са с Т дължина и нямат повтарящи се елементи
-            allColumnCombination = per.GetPermutationWithoutRepeat(t);
+            allColumnCombination = per.GetPermutationWithoutRepeat(n);
         }
 
         public bool CheckAllColumns()

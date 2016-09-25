@@ -21,7 +21,7 @@ namespace CoveringArraysChecker
 
             allCombinations = per.GetCombinations(1); //TODO: remove magic string (statesPerElement)
 
-            Checker checker = new Checker(lines, allCombinations, 3); //TODO: remove magic string (t)
+            Checker checker = new Checker(lines, allCombinations, 5); //TODO: remove magic string (t)
 
             if (checker.CheckAllColumns()) 
             {

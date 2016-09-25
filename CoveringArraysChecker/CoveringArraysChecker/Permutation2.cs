@@ -44,41 +44,73 @@ namespace CoveringArraysChecker
         // Does it work ?
         public List<string> GetPermutationWithoutRepeat(int length)
         {
-            var letters = Common.GetNumbersFromZeroToN(length - 1).ToCharArray();
+            var letters = Common.GetNumbersFromZeroToN(length - 1);
 
-            MakePermutationWithoutRepeat(letters, 0, length - 1);
+            MakePermutationWithoutRepeat(letters);
 
 
             return combinations;
         }
 
 
-        private void MakePermutationWithoutRepeat(char[] arry, int i, int n)
+        private void MakePermutationWithoutRepeat(string word)
         {
-            int j;
-            if (i == n)
+
+            List<string> result = new List<string>();
+
+            int total = (int)Math.Pow(2, word.Length);
+
+
+            for (int i = 0; i < total; i++)
             {
-                this.combinations.Add(new string(arry));
-            }
-            else
-            {
-                for (j = i; j <= n; j++)
+                string tempWord = string.Empty;
+                // pick the letters from the word
+
+                for (int temp = i, j = 0; temp > 0; temp = temp >> 1, j++)
                 {
-                    swap(ref arry[i], ref arry[j]);
-                    MakePermutationWithoutRepeat(arry, i + 1, n);
-                    swap(ref arry[i], ref arry[j]); //backtrack
+                    if ((temp & 1) == 1)
+                    {
+                        tempWord += word[j];
+                    }
                 }
+
+                // generate permutations from the letters
+                List<string> permutations;
+                Permutations(tempWord, out permutations);
+
+                foreach (var prm in permutations)
+                    result.Add(prm);
+            }
+
+            // remove duplicates
+          combinations =  result.Distinct().Where(x => x.Length == 3).ToList();  // TODO: Тук трябва да подам Т (3)
+
+        }
+
+        static void Permutations(string str, out List<string> result)
+        {
+            result = new List<string>();
+
+            if (str.Length == 1)
+            {
+                result.Add(str);
+                return;
+            }
+
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                char c = str[i];
+                string temp = str.Remove(i, 1);
+
+                List<string> tempResult;
+                Permutations(temp, out tempResult);
+
+                foreach (var tempRes in tempResult)
+                    result.Add(c + tempRes);
             }
         }
 
-        private void swap(ref char a, ref char b)
-        {
-            char tmp;
-            tmp = a;
-            a = b;
-            b = tmp;
-        }
 
-   
     }
 }
