@@ -12,23 +12,23 @@ namespace CoveringArraysChecker
         private List<string> allCombinations;
         private List<string> allColumnCombination;
 
-        public Checker(List<string> givenArray, List<string> combinations, int n, int t)
+        public Checker(File arrayFile)
         {
-            this.array = givenArray;
-            this.allCombinations = combinations;
+            this.array = arrayFile.array;
 
             // Всички комбинации от t колони
             // Трябва да не се повтарят индексите на колоните !!!
-            Permutation2 per = new Permutation2(" ");
+            Permutation2 per = new Permutation2();
+            this.allCombinations = per.GetAllPosibleCombinations(arrayFile.statesPerElement - 1);
 
             // (FIXED) Грешка, трябва да намерия всички комбинации от Т елемента в Н на брой елемента
             // Може да стане като намерим всички възможни комбинации и вземем само тези който са с Т дължина и нямат повтарящи се елементи
-            allColumnCombination = per.GetPermutationWithoutRepeat(n, t);
+            per = new Permutation2();
+            allColumnCombination = per.GetPermutationWithoutRepeat(arrayFile.elementsCount, arrayFile.t, " ");
         }
 
         public bool CheckAllColumns()
         {
-
             foreach (var tColumnCombination in allColumnCombination)
             {
                 // Лист от индекси на колоните който трябва да провери
@@ -69,15 +69,11 @@ namespace CoveringArraysChecker
                 // Проверява дали конкретната комбинация съществъва в колекцията със всияки комбинации който трябва да се съдържат
                 // Ако я има в колекцията , я маха
 
-
-                // Проблем търси 0000 в 00
-                //   if (allCombinations.Contains(currentCombination.ToString()))
-
+                //(FIXED) Проблем търси 0000 в 00
                 while (tempAllCombinations.FirstOrDefault(x => currentCombination.ToString().Contains(x)) != null)
                 {
                     //TODO: Може да не работи защото махаме само по една комбинация на ред
                     tempAllCombinations.Remove(tempAllCombinations.FirstOrDefault(x => currentCombination.ToString().Contains(x)));
-
                 }
             }
 

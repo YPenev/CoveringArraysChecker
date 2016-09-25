@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoveringArraysChecker
 {
@@ -11,13 +9,13 @@ namespace CoveringArraysChecker
         private List<string> combinations;
         private string charBetweenElements;
 
-        public Permutation2(string charBetweenElements)
+        public Permutation2()
         {
             this.combinations = new List<string>();
-            this.charBetweenElements = charBetweenElements;
+            this.charBetweenElements = string.Empty;
         }
 
-        public List<string> GetCombinations(int length)
+        public List<string> GetAllPosibleCombinations(int length)
         {
             var letters = Common.GetNumbersFromZeroToN(length);
 
@@ -42,12 +40,13 @@ namespace CoveringArraysChecker
         }
 
         // Does it work ?
-        public List<string> GetPermutationWithoutRepeat(int length, int t)
+        public List<string> GetPermutationWithoutRepeat(int length, int t,  string charBetweenElements)
         {
+            this.charBetweenElements = charBetweenElements;
+
             var letters = Common.GetNumbersFromZeroToN(length - 1);
 
             MakePermutationWithoutRepeat(letters, t);
-
 
             return combinations;
         }
@@ -84,7 +83,6 @@ namespace CoveringArraysChecker
 
             // remove duplicates
           combinations =  result.Distinct().Where(x => x.Length == t).ToList();  // TODO: Тук трябва да подам Т (3)
-
         }
 
         static void Permutations(string str, out List<string> result)
@@ -96,7 +94,6 @@ namespace CoveringArraysChecker
                 result.Add(str);
                 return;
             }
-
 
             for (int i = 0; i < str.Length; i++)
             {

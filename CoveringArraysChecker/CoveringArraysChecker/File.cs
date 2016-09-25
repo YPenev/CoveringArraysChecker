@@ -1,36 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoveringArraysChecker
 {
     public class File
     {
-        private List<string> allCombinations;
-        private int result;
-        private int statesPerElement;
-        private int elementsCount;
-        private int t;
+        // TODO: make encapsulation
+        public List<string> array;
+        public List<string> allCombinations;
+        public int result;
+        public int statesPerElement;
+        public int elementsCount;
+        public int t;
 
-        public bool CheckAllLines(List<string> lines)
+        public File(string filePath)
         {
-            Permutation2 per = new Permutation2("");
+            this.ReadFile(filePath, 11, 2, 5, 3);
+        }
 
-            allCombinations = per.GetCombinations(statesPerElement - 1); 
+        // TODO: Remove
+        protected bool CheckAllLines(File arrayFile)
+        {
+            Permutation2 per = new Permutation2();
 
-            Checker checker = new Checker(lines, allCombinations, elementsCount, t); //TODO: remove magic string (t)
+            allCombinations = per.GetAllPosibleCombinations(statesPerElement - 1);
 
-            if (checker.CheckAllColumns())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //Checker checker = new Checker(arrayFile.array, arrayFile.allCombinations, arrayFile.elementsCount, arrayFile.t); //TODO: remove magic string (t)
+
+            //if (checker.CheckAllColumns())
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+            return false;
         }
 
         private bool CheckLine(string line)
@@ -47,7 +54,9 @@ namespace CoveringArraysChecker
             return true;
         }
 
-        public List<string> ReadFile(string path, int result, int statesPerElement, int elementsCount, int t)
+
+        // TODO: make it private
+        public void ReadFile(string path, int result, int statesPerElement, int elementsCount, int t)
         {
             string line;
             List<string> lines = new List<string>();
@@ -68,8 +77,7 @@ namespace CoveringArraysChecker
                 }
 
                 Print.Array(lines);
-
-                return lines;
+                this.array = lines;
             }
             catch (Exception e)
             {
