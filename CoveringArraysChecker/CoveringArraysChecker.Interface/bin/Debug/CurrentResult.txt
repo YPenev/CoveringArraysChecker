@@ -1,0 +1,2 @@
+In column:031
+Not found combinations: 00

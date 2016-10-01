@@ -21,6 +21,8 @@ namespace CoveringArraysChecker.Interface
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static File currentFile;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,14 +30,17 @@ namespace CoveringArraysChecker.Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            lblResult.Content = "Zdr, bebche";
+            Checker checker = new Checker(currentFile);
+            lblResult.Content = checker.CheckAllColumns();
+
+            lblResult.Content += Log.ReadResult();
         }
 
         private void btnChoseFile_Click(object sender, RoutedEventArgs e)
         {
             var ofd = new OpenFileDialog();
             ofd.ShowDialog();
-            File chosenFile = new File(ofd.FileName);
+            currentFile = new File(ofd.FileName);
             lblArray.Content = Log.ReadArray();
         }
     }

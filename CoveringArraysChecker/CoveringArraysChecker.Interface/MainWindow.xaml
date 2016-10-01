@@ -14,7 +14,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Button x:Name="btnCheck" Content="Check" HorizontalAlignment="Left" Margin="48,104,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="btnChoseFile" Content="Chose file" HorizontalAlignment="Left" Margin="48,61,0,0" VerticalAlignment="Top" Width="75" Click="btnChoseFile_Click"/>
+        <Button x:Name="btnChoseFile" Content="Choose file" HorizontalAlignment="Left" Margin="48,61,0,0" VerticalAlignment="Top" Width="75" Click="btnChoseFile_Click"/>
         <Label x:Name="lblResult" Content="" HorizontalAlignment="Left" Margin="329,10,0,0" VerticalAlignment="Top" Width="181" Height="259">
             <Label.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

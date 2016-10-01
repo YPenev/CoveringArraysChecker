@@ -82,19 +82,24 @@ namespace CoveringArraysChecker
             }
             else
             {
-                Console.WriteLine("In column:");
+                StringBuilder errorInfo = new StringBuilder();
+
+                errorInfo.Append("In column:");
 
                 foreach (var item in columnsIndexes)
                 {
-                    Console.Write(item);
+                    errorInfo.Append(item);
                 }
-                Console.WriteLine();
-                Console.WriteLine("Not found: ");
+                errorInfo.Append(Environment.NewLine);
+                errorInfo.Append("Not found combinations: ");
+
                 foreach (var item in tempAllCombinations)
                 {
-                    Console.WriteLine(item);
+                    errorInfo.Append(item);
                 }
 
+                Log.WriteResult(errorInfo.ToString());
+                Console.WriteLine(errorInfo.ToString());
                 return false;
             }
         }
