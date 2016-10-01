@@ -78,13 +78,15 @@ namespace CoveringArraysChecker
 
             if (tempAllCombinations.Count == 0)
             {
+                Log.WriteResult("YES, the array is Covering array !");
                 return true;
             }
             else
             {
                 StringBuilder errorInfo = new StringBuilder();
 
-                errorInfo.Append("In column:");
+                errorInfo.Append("NO, the array is NOT Covering array !");
+                errorInfo.Append("Because in column:");
 
                 foreach (var item in columnsIndexes)
                 {

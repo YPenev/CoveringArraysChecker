@@ -30,18 +30,35 @@ namespace CoveringArraysChecker.Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Checker checker = new Checker(currentFile);
-            lblResult.Content = checker.CheckAllColumns();
+            try
+            {
+                if (currentFile == null)
+                {
+                    throw new Exception("No file chosen !");
+                }
 
-            lblResult.Content += Log.ReadResult();
+                Checker checker = new Checker(currentFile);
+                lblResult.Content = Log.ReadResult();
+            }
+            catch (Exception ex)
+            {
+                lblResult.Content = "Error !" + Environment.NewLine + ex.Message;
+            }
         }
 
         private void btnChoseFile_Click(object sender, RoutedEventArgs e)
         {
-            var ofd = new OpenFileDialog();
-            ofd.ShowDialog();
-            currentFile = new File(ofd.FileName);
-            lblArray.Content = Log.ReadArray();
+            try
+            {
+                var ofd = new OpenFileDialog();
+                ofd.ShowDialog();
+                currentFile = new File(ofd.FileName);
+                lblArray.Content = Log.ReadArray();
+            }
+            catch (Exception)
+            {
+                // No file selected
+            }
         }
     }
 }
