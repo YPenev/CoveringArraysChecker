@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoveringArraysChecker", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoveringArraysChecker.Tests", "CoveringArraysChecker.Tests\CoveringArraysChecker.Tests.csproj", "{564E0B63-5376-44E1-BA3D-8067EF9AFE11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoveringArraysChecker.Interface", "CoveringArraysChecker.Interface\CoveringArraysChecker.Interface.csproj", "{B693483B-DE2D-4FFB-8DA1-B449E4DF9702}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{564E0B63-5376-44E1-BA3D-8067EF9AFE11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{564E0B63-5376-44E1-BA3D-8067EF9AFE11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{564E0B63-5376-44E1-BA3D-8067EF9AFE11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B693483B-DE2D-4FFB-8DA1-B449E4DF9702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B693483B-DE2D-4FFB-8DA1-B449E4DF9702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B693483B-DE2D-4FFB-8DA1-B449E4DF9702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B693483B-DE2D-4FFB-8DA1-B449E4DF9702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

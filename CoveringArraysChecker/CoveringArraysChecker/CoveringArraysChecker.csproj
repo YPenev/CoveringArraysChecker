@@ -46,7 +46,7 @@
     <Compile Include="Checker.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="File.cs" />
-    <Compile Include="Permutation.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Permutation2.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="StarUp.cs" />

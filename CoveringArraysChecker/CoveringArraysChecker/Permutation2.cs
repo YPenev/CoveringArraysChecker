@@ -31,7 +31,6 @@ namespace CoveringArraysChecker
                 this.combinations.Add(prefix);
                 return;
             }
-
             for (var i = 0; i < letters.Length; i++)
             {
                 var newPrefix = prefix + this.charBetweenElements + letters[i];

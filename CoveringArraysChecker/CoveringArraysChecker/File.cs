@@ -39,11 +39,14 @@ namespace CoveringArraysChecker
                     }
                 }
 
+                Log.WriteArray(lines);
                 Print.Array(lines);
                 this.array = lines;
             }
             catch (Exception e)
             {
+                // TODO: Log exeption
+
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
 
