@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoveringArraysChecker
 {
     public static class Print
     {
-        // TODO: Да се изкара от този клас (loose coupling !!!)
         public static void Array(List<string> array)
         {
             foreach (var line in array)

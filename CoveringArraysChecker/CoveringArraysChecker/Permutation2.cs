@@ -40,7 +40,7 @@ namespace CoveringArraysChecker
         }
 
         // Does it work ?
-        public List<string> GetPermutationWithoutRepeat(int length, int t,  string charBetweenElements)
+        public List<string> GetPermutationWithoutRepeat(int length, int t, string charBetweenElements)
         {
             this.charBetweenElements = charBetweenElements;
 
@@ -82,7 +82,7 @@ namespace CoveringArraysChecker
             }
 
             // remove duplicates
-          combinations =  result.Distinct().Where(x => x.Length == t).ToList();  // TODO: Тук трябва да подам Т (3)
+            combinations = result.Distinct().Where(x => x.Length == t).ToList();  // TODO: Тук трябва да подам Т (3)
         }
 
         static void Permutations(string str, out List<string> result)

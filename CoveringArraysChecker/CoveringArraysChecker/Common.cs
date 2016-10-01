@@ -2,7 +2,7 @@
 
 namespace CoveringArraysChecker
 {
-   public static class Common
+    public static class Common
     {
         public static string GetNumbersFromZeroToN(int length)
         {

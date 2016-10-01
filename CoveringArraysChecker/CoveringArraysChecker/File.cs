@@ -19,44 +19,7 @@ namespace CoveringArraysChecker
             this.ReadFile(filePath, 11, 2, 5, 3);
         }
 
-        // TODO: Remove
-        protected bool CheckAllLines(File arrayFile)
-        {
-            Permutation2 per = new Permutation2();
-
-            allCombinations = per.GetAllPosibleCombinations(statesPerElement - 1);
-
-            //Checker checker = new Checker(arrayFile.array, arrayFile.allCombinations, arrayFile.elementsCount, arrayFile.t); //TODO: remove magic string (t)
-
-            //if (checker.CheckAllColumns())
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
-            return false;
-        }
-
-        private bool CheckLine(string line)
-        {
-            foreach (var combination in allCombinations)
-            {
-                if (!line.Contains(combination))
-                {
-                    Console.WriteLine($"In line: \n {line} \n Does not contain: \n {combination}");
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-
-        // TODO: make it private
-        public void ReadFile(string path, int result, int statesPerElement, int elementsCount, int t)
+        private void ReadFile(string path, int result, int statesPerElement, int elementsCount, int t)
         {
             string line;
             List<string> lines = new List<string>();
