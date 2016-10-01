@@ -38,6 +38,7 @@ namespace CoveringArraysChecker.Interface
                 }
 
                 Checker checker = new Checker(currentFile);
+                checker.CheckAllColumns();
                 lblResult.Content = Log.ReadResult();
             }
             catch (Exception ex)

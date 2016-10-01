@@ -1,2 +1,1 @@
-In column:031
-Not found combinations: 00
+YES, the array is Covering array !
